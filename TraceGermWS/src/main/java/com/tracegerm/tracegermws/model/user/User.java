@@ -26,6 +26,12 @@ public class User {
 	@JoinColumn(name ="FK_USERNAME")
 	private List<VisitDetails> categoryList = new ArrayList<VisitDetails>();
 
+	
+	public User(String username) {
+		super();
+		this.username = username;
+	}
+
 	public String getUsername() {
 		return username;
 	}
