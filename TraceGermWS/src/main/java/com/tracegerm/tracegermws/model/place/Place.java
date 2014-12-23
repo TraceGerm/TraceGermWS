@@ -35,7 +35,7 @@ public class Place {
 	protected float accuracy;
 	
 	@OneToMany(targetEntity = VisitDetails.class, cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
-	@JoinColumn(name ="FK_USERNAME")
+	@JoinColumn(name ="FK_PLACE")
 	private List<VisitDetails> categoryList = new ArrayList<VisitDetails>();
 
 	public float getLatitude() {

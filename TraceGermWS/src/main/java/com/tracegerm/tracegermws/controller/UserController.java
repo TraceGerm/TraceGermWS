@@ -1,53 +1,44 @@
 package com.tracegerm.tracegermws.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.tracegerm.tracegermws.dao.UserDao;
 import com.tracegerm.tracegermws.model.user.User;
+import com.tracegerm.tracegermws.service.IUserService;
 
 @Controller
 @RequestMapping(value="/user")
 public class UserController {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
-  @Autowired
-  private UserDao _userDao;
+@Autowired
+  private IUserService userService;
   
   @RequestMapping(value="/delete")
   @ResponseBody
   public String delete(String username) {
     try {
       User user = new User(username);
-      _userDao.delete(user);
+      userService.deleteUser(user);
     }
     catch(Exception ex) {
       return ex.getMessage();
     }
     return "User succesfully deleted!";
   }
-  
-  @RequestMapping(value="/get-by-email")
-  @ResponseBody
-  public String getByEmail(String email) {
-    String userId;
-    try {
-      User user = _userDao.getByEmail(email);
-      userId = String.valueOf(user.getUsername());
-    }
-    catch(Exception ex) {
-      return "User not found";
-    }
-    return "The user id is: " + userId;
-  }
 
   @RequestMapping(value="/save")
   @ResponseBody
   public String create(String username) {
+	  LOGGER.info("Request for user creation with username: " + username +"");
     try {
       User user = new User(username);
-      _userDao.save(user);
+      userService.createUser(user);
     }
     catch(Exception ex) {
       return ex.getMessage();
@@ -55,4 +46,4 @@ public class UserController {
     return "User succesfully saved!";
   }
 
-} // class UserController
+}
