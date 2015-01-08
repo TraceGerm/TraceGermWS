@@ -31,6 +31,10 @@ public class User {
 		super();
 		this.username = username;
 	}
+	
+	public User() {
+		super();
+	}
 
 	public String getUsername() {
 		return username;

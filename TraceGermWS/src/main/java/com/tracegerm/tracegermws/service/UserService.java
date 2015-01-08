@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tracegerm.tracegermws.dao.IUserDao;
+import com.tracegerm.tracegermws.dao.IUserRepository;
 import com.tracegerm.tracegermws.model.user.User;
 
 @Component
@@ -14,13 +14,8 @@ import com.tracegerm.tracegermws.model.user.User;
 public class UserService implements IUserService{
 
 	@Autowired
-	private IUserDao userDao;
+	private IUserRepository userDao;
 	
-	@Transactional(readOnly = true)
-	@Override
-	public User fetchUserById(long userId) {
-		return userDao.findById(userId);
-	}
 
 	@Override
 	public void createUser(User user) {
@@ -32,12 +27,21 @@ public class UserService implements IUserService{
 		userDao.delete(user);
 	}
 	
-	public IUserDao getUserDao() {
+	public IUserRepository getUserDao() {
 		return userDao;
 	}
 
-	public void setUserDao(IUserDao userDao) {
+	public void setUserDao(IUserRepository userDao) {
 		this.userDao = userDao;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.tracegerm.tracegermws.service.IUserService#fetchUserById(java.lang.String)
+	 */
+	@Override
+	public User fetchUserById(String Username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

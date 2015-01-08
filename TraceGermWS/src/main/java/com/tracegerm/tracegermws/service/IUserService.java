@@ -4,7 +4,7 @@ import com.tracegerm.tracegermws.model.user.User;
 
 public interface IUserService {
 	
-	User fetchUserById(long userId) ;
+	User fetchUserById(String Username) ;
 	
 	void createUser(User user);
 	
