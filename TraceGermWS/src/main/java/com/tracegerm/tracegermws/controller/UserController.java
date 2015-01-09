@@ -57,7 +57,7 @@ public class UserController {
   }
   
   @RequestMapping(value = "/saves", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-  public @ResponseBody ResponseEntity<Void> createUser(@RequestParam String username, @RequestBody UserDTO userDTO) {
+  public @ResponseBody ResponseEntity<Void> createUser(String username, @RequestBody UserDTO userDTO) {
 		LOGGER.info("Request for user creation with name: " + userDTO.getUsername(), username);
 		
 		User user = new UserDTOtoUserMapper().map(userDTO, new User(username));
