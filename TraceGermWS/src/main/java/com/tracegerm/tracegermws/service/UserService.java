@@ -1,11 +1,18 @@
 package com.tracegerm.tracegermws.service;
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tracegerm.tracegermws.dao.IUserRepository;
+import com.tracegerm.tracegermws.dto.UserDTO;
+import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
+import com.tracegerm.tracegermws.mapper.UserDTOtoUserMapper;
+import com.tracegerm.tracegermws.mapper.UserToUserDTOMapper;
 import com.tracegerm.tracegermws.model.user.User;
 
 @Component
@@ -14,34 +21,30 @@ import com.tracegerm.tracegermws.model.user.User;
 public class UserService implements IUserService{
 
 	@Autowired
-	private IUserRepository userDao;
+	private IUserRepository userRepository;
+	
+	@Autowired
+	public UserService(IUserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 	
 
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	@Override
-	public void createUser(User user) {
-		userDao.save(user);		
+	public String createUser(UserDTO userDTO) {
+		User user = new UserDTOtoUserMapper().map(userDTO, new User());
+		user = userRepository.save(user);
+
+		return user.getUsername();
 	}
 	
-	@Override 
-	public void deleteUser(User user) {
-		userDao.delete(user);
-	}
 	
-	public IUserRepository getUserDao() {
-		return userDao;
-	}
-
-	public void setUserDao(IUserRepository userDao) {
-		this.userDao = userDao;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.tracegerm.tracegermws.service.IUserService#fetchUserById(java.lang.String)
-	 */
+	@Transactional(readOnly = true)
 	@Override
-	public User fetchUserById(String Username) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserDTO fetchUserByUsername(String username) throws ResourceNotFoundException{
+		User user = userRepository.findOne(username);
+		return Objects.nonNull(user) ?
+				new UserToUserDTOMapper().map(user, new UserDTO()) : new UserDTO();
 	}
 
 	

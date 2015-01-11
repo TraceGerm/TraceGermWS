@@ -1,13 +1,13 @@
 package com.tracegerm.tracegermws.service;
 
-import com.tracegerm.tracegermws.model.user.User;
+import com.tracegerm.tracegermws.dto.UserDTO;
+import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
 
 public interface IUserService {
 	
-	User fetchUserById(String Username) ;
+	UserDTO fetchUserByUsername(String Username) throws ResourceNotFoundException;
 	
-	void createUser(User user);
+	String createUser(UserDTO userDTO);
 	
-	void deleteUser(User user);
 
 }
