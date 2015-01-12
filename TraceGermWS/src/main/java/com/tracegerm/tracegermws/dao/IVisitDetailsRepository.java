@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.tracegerm.tracegermws.model.user.User;
 import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
 
 /**
@@ -16,7 +17,7 @@ import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
  */
 public interface IVisitDetailsRepository extends JpaRepository<VisitDetails, Long>{
 	
-	@Query("select * from visit_details where visit_details.fk_username = ?")
-    List<VisitDetails> findVisitDetailsByUser(String username);
+	@Query("select details from VisitDetails details where details.user = ?1")
+    List<VisitDetails> findVisitDetailsByUser(User user);
 
 }

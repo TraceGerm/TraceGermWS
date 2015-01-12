@@ -49,7 +49,7 @@ public class PlaceController {
 	  
 	@RequestMapping(value = "/{placeId}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PlaceDTO> getPlace(@PathVariable long placeId)  throws ResourceNotFoundException {
-		LOGGER.info("Request for business");
+		LOGGER.info("Request for place");
 			
 		PlaceDTO place = placeService.fetchPlaceByID(placeId);
 		return new ResponseEntity<>(place, HttpStatus.OK);

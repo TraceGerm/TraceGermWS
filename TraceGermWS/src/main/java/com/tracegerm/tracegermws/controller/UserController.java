@@ -45,7 +45,7 @@ public class UserController {
   
   @RequestMapping(value = "/{username}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<UserDTO> getUser(@PathVariable String username)  throws ResourceNotFoundException {
-	  LOGGER.info("Request for business");
+	  LOGGER.info("Request for user");
 		
 	  UserDTO user = userService.fetchUserByUsername(username);
 	  return new ResponseEntity<>(user, HttpStatus.OK);

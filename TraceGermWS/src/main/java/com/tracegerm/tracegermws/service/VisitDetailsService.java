@@ -19,6 +19,7 @@ import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
 import com.tracegerm.tracegermws.mapper.IMapper;
 import com.tracegerm.tracegermws.mapper.VisitDetailsDTOtoVisitDetailsMapper;
 import com.tracegerm.tracegermws.mapper.VisitDetailsToVisitDetailsDTOMapper;
+import com.tracegerm.tracegermws.model.user.User;
 import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
 
 /**
@@ -47,7 +48,7 @@ public class VisitDetailsService implements IVisitDetailsService{
 	
 	@Transactional(readOnly = true)
 	@Override
-	public VisitDetailsDTO fetchVisiDetailsByID(long visitDetailsId)
+	public VisitDetailsDTO fetchVisitDetailsByID(long visitDetailsId)
 			throws ResourceNotFoundException {
 		VisitDetails visitDetails = visitDetailsRepository.findOne(visitDetailsId);
 		return Objects.nonNull(visitDetails) ?
@@ -58,9 +59,10 @@ public class VisitDetailsService implements IVisitDetailsService{
 	
 	@Transactional(readOnly = true)
 	@Override
-	public Collection<VisitDetailsDTO> fetchVisitDetailsByUser(String username)
+	public Collection<VisitDetailsDTO> fetchVisitDetailsByUser(User user)
 			throws ResourceNotFoundException {
-		List<VisitDetails> userVisitDetailsList = visitDetailsRepository.findVisitDetailsByUser(username);
+				
+		List<VisitDetails> userVisitDetailsList = visitDetailsRepository.findVisitDetailsByUser(user);
 		List<VisitDetailsDTO> userVisitDetails = new ArrayList<>();
 		
 		IMapper<VisitDetails, VisitDetailsDTO> mapper = new VisitDetailsToVisitDetailsDTOMapper();
