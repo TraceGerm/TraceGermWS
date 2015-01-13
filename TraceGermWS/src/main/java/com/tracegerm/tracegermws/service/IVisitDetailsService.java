@@ -15,7 +15,7 @@ import com.tracegerm.tracegermws.model.user.User;
  */
 public interface IVisitDetailsService {
 	
-	long createVisitDetails(VisitDetailsDTO visitDetailsDTO);
+	long createVisitDetails(String username, VisitDetailsDTO visitDetailsDTO);
 	
 	VisitDetailsDTO fetchVisitDetailsByID(long visitDetailsId) throws ResourceNotFoundException;
 	

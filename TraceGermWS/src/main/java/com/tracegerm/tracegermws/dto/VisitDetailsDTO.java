@@ -15,8 +15,6 @@ public class VisitDetailsDTO {
 	
 	private Timestamp timeStamp;
 	
-	//private User user;
-
 	public Long getId() {
 		return id;
 	}

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tracegerm.tracegermws.dao.IUserRepository;
 import com.tracegerm.tracegermws.dao.IVisitDetailsRepository;
 import com.tracegerm.tracegermws.dto.VisitDetailsDTO;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
@@ -31,18 +32,20 @@ import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
 public class VisitDetailsService implements IVisitDetailsService{
 
 	private final IVisitDetailsRepository visitDetailsRepository;
+	private final IUserRepository userRepository;
 
 	@Autowired
-	public VisitDetailsService(IVisitDetailsRepository visitDetailsRepository) {
+	public VisitDetailsService(IVisitDetailsRepository visitDetailsRepository, IUserRepository userRepository) {
 		this.visitDetailsRepository = visitDetailsRepository;
+		this.userRepository = userRepository;
 	}
 	
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	@Override
-	public long createVisitDetails(VisitDetailsDTO visitDetailsDTO) {
+	public long createVisitDetails(String username, VisitDetailsDTO visitDetailsDTO) {
 		VisitDetails visitDetails = new VisitDetailsDTOtoVisitDetailsMapper().map(visitDetailsDTO, new VisitDetails());
-		visitDetails = visitDetailsRepository.save(visitDetails);
-
+		visitDetails.setUser(userRepository.findOne(username)); 
+		visitDetailsRepository.save(visitDetails);
 		return visitDetails.getId();
 	}
 	

@@ -21,7 +21,7 @@ import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
 public class Place {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "PLACE_ID")
 	protected Long id;
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tracegerm.tracegermws.dto.VisitDetailsDTO;
@@ -40,12 +41,11 @@ public class VisitDetailsController {
 		this.visitDetailsService = visitDetailsService;
 	}
 	
-	@RequestMapping(value = "/user/{username}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> createVisitDetails(@PathVariable Long ownerId, @RequestBody VisitDetailsDTO visitDetailsDTO) {
-		LOGGER.info("Request for visit details creation");
+	@RequestMapping(value = "/save{username}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Void> createVisitDetails(@RequestParam String username, @RequestBody VisitDetailsDTO visitDetailsDTO) {
+		LOGGER.info("Request for visit details creation for user with username:"+ username);
 		
-		
-		visitDetailsService.createVisitDetails(visitDetailsDTO);
+		visitDetailsService.createVisitDetails(username, visitDetailsDTO);
 		HttpHeaders headers = new HttpHeaders();
 		return new ResponseEntity<>(headers, HttpStatus.CREATED);
 	}

@@ -20,7 +20,7 @@ import com.tracegerm.tracegermws.model.user.User;
 public class VisitDetails {
 		
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "VISIT_DETAILS_ID")
 	protected Long id;
 	
