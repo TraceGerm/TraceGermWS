@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
 
 @Entity
-@Table(name = "PLACE")
+@Table(name = "PLACES")
 public class Place {
 	
 	@Id
