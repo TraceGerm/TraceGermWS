@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tracegerm.tracegermws.dao.IPlaceRepository;
 import com.tracegerm.tracegermws.dto.PlaceDTO;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
 import com.tracegerm.tracegermws.mapper.PlaceDTOtoPlaceMapper;
 import com.tracegerm.tracegermws.mapper.PlaceToPlaceDTOMapper;
 import com.tracegerm.tracegermws.model.place.Place;
+import com.tracegerm.tracegermws.repository.IPlaceRepository;
 
 /**
  * @author askos

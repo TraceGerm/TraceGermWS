@@ -13,8 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tracegerm.tracegermws.dao.IUserRepository;
-import com.tracegerm.tracegermws.dao.IVisitDetailsRepository;
 import com.tracegerm.tracegermws.dto.VisitDetailsDTO;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
 import com.tracegerm.tracegermws.mapper.IMapper;
@@ -22,6 +20,8 @@ import com.tracegerm.tracegermws.mapper.VisitDetailsDTOtoVisitDetailsMapper;
 import com.tracegerm.tracegermws.mapper.VisitDetailsToVisitDetailsDTOMapper;
 import com.tracegerm.tracegermws.model.user.User;
 import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
+import com.tracegerm.tracegermws.repository.IUserRepository;
+import com.tracegerm.tracegermws.repository.IVisitDetailsRepository;
 
 /**
  * @author askos

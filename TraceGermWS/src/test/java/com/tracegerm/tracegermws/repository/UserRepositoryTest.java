@@ -10,8 +10,9 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.tracegerm.tracegermws.Application;
-import com.tracegerm.tracegermws.dao.IUserRepository;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
+import com.tracegerm.tracegermws.model.user.User;
+import com.tracegerm.tracegermws.repository.IUserRepository;
 
 /**
  * @author askos
@@ -28,6 +29,20 @@ public class UserRepositoryTest extends DbUnitTestCase {
 	public void testExistsFindByUsername() throws ResourceNotFoundException {
 		boolean userExists = userRepository.exists("USER1");
 		assertTrue(userExists);
+	}
+	
+	@Test
+	public void testUserNotFoundByUsername() throws ResourceNotFoundException {
+		boolean userExists = userRepository.exists("RANDOM");
+		assertFalse(userExists);
+	}
+	
+	@Test
+	public void testUserCreation() {
+		User user = new User("USER_TEST");
+		userRepository.save(user);
+		User savedUser= userRepository.findOne("USER_TEST");
+		assertNotNull(savedUser.getUsername());
 	}
 
 }

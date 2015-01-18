@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tracegerm.tracegermws.dao.IUserRepository;
 import com.tracegerm.tracegermws.dto.UserDTO;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
 import com.tracegerm.tracegermws.mapper.UserDTOtoUserMapper;
 import com.tracegerm.tracegermws.mapper.UserToUserDTOMapper;
 import com.tracegerm.tracegermws.model.user.User;
+import com.tracegerm.tracegermws.repository.IUserRepository;
 
 @Component
 @Transactional

@@ -36,7 +36,7 @@ public class Place {
 	
 	@OneToMany(targetEntity = VisitDetails.class, cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
 	@JoinColumn(name ="FK_PLACE")
-	private List<VisitDetails> categoryList = new ArrayList<VisitDetails>();
+	private List<VisitDetails> detailsList = new ArrayList<VisitDetails>();
 
 	public float getLatitude() {
 		return latitude;
@@ -70,12 +70,12 @@ public class Place {
 		this.id = id;
 	}
 
-	public List<VisitDetails> getCategoryList() {
-		return categoryList;
+	public List<VisitDetails> getDetailsList() {
+		return detailsList;
 	}
 
-	public void setCategoryList(List<VisitDetails> categoryList) {
-		this.categoryList = categoryList;
+	public void setDetailsList(List<VisitDetails> detailsList) {
+		this.detailsList = detailsList;
 	}
 	
 	

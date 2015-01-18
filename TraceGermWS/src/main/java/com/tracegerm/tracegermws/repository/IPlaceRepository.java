@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.tracegerm.tracegermws.dao;
+package com.tracegerm.tracegermws.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
