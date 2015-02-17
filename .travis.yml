@@ -1,0 +1,9 @@
+language: java
+jdk:
+- oraclejdk8
+notifications:
+  email: false
+before_install:
+- cd TraceGermWS
+after_success:
+- mvn compile war:war
