@@ -5,3 +5,5 @@ notifications:
   email: false
 before_install:
 - cd TraceGermWS
+after_success:
+- mvn install
