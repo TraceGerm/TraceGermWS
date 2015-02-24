@@ -28,6 +28,7 @@ public class VisitDetailsRepositoryTest extends DbUnitTestCase {
 	
 	@Autowired
 	private IVisitDetailsRepository visitDetailsRepository;
+	
 	@Autowired
 	private IPlaceRepository placeRepository;
 	

@@ -25,11 +25,11 @@ public class Place {
 	@Column(name = "PLACE_ID")
 	protected Long id;
 
-	@Column(name = "LATITUDE")
-	protected float latitude;
+	@Column(name = "LATITUDE", precision=2, scale=4)
+	protected double latitude;
 	
-	@Column(name = "LONGITUDE")
-	protected float longitude;
+	@Column(name = "LONGITUDE", precision=2, scale=4)
+	protected double longitude;
 	
 	@Column(name = "ACCURACY")
 	protected float accuracy;
@@ -38,19 +38,19 @@ public class Place {
 	@JoinColumn(name ="FK_PLACE")
 	private List<VisitDetails> detailsList = new ArrayList<VisitDetails>();
 
-	public float getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(float latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
-	public float getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
+	public void setLongitude(double longitude) {
 
-	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
 

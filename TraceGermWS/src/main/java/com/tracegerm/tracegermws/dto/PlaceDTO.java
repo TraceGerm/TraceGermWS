@@ -3,6 +3,9 @@
  */
 package com.tracegerm.tracegermws.dto;
 
+import java.text.DecimalFormat;
+
+
 
 /**
  * @author askos
@@ -11,26 +14,30 @@ package com.tracegerm.tracegermws.dto;
 public class PlaceDTO {
 	
 	private Long id;
-	private float latitude;
-	private float longitude;
+	private double latitude;
+	private double longitude;
 	private float accuracy;
+	
+	DecimalFormat newFormat = new DecimalFormat("##.#####");
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public float getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(float latitude) {
-		this.latitude = latitude;
+	public void setLatitude(double latitude) {
+		this.latitude = Double.valueOf(newFormat.format(latitude));
+		
 	}
-	public float getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(float longitude) {
-		this.longitude = longitude;
+	public void setLongitude(double longitude) {
+		this.longitude = Double.valueOf(newFormat.format(longitude));
 	}
 	public float getAccuracy() {
 		return accuracy;

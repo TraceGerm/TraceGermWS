@@ -39,12 +39,12 @@ public class PlaceController {
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<Void> createPlace(@RequestBody PlaceDTO placeDTO) {	
+	public @ResponseBody ResponseEntity<Long> createPlace(@RequestBody PlaceDTO placeDTO) {	
 		LOGGER.info("Request for new place register");			
 			
-		placeService.createPlace(placeDTO);
+		long placeID = placeService.createPlace(placeDTO);
 		HttpHeaders headers = new HttpHeaders();
-		return new ResponseEntity<>(headers, HttpStatus.CREATED);
+		return new ResponseEntity<>(placeID, headers, HttpStatus.CREATED);
 	}
 	  
 	@RequestMapping(value = "/{placeId}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
