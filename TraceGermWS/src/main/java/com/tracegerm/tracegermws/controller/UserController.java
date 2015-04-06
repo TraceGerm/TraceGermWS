@@ -33,7 +33,7 @@ public class UserController {
 		this.userService = userService;
   }
   
-  @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+  @RequestMapping(value ="/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
   public @ResponseBody ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
 	  LOGGER.info("Request for user creation with username: " + userDTO.getUsername());
 		
