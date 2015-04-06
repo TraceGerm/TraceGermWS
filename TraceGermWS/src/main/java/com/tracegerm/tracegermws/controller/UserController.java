@@ -33,14 +33,14 @@ public class UserController {
 		this.userService = userService;
   }
   
-  @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-  public @ResponseBody ResponseEntity<String> createUser(@RequestBody UserDTO userDTO) {
+  @RequestMapping(value ="/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+  public @ResponseBody ResponseEntity<UserDTO> createUser(@RequestBody UserDTO userDTO) {
 	  LOGGER.info("Request for user creation with username: " + userDTO.getUsername());
 		
 		
-	  String username = userService.createUser(userDTO);
+	  userService.createUser(userDTO);
 	  HttpHeaders headers = new HttpHeaders();
-	  return new ResponseEntity<>(username, headers, HttpStatus.CREATED);
+	  return new ResponseEntity<>(userDTO, headers, HttpStatus.CREATED);
   }
   
   @RequestMapping(value = "/{username}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
