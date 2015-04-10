@@ -1,19 +1,18 @@
 package com.tracegerm.tracegermws.service;
 
-import java.util.Objects;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.tracegerm.tracegermws.dto.UserDTO;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
 import com.tracegerm.tracegermws.mapper.UserDTOtoUserMapper;
 import com.tracegerm.tracegermws.mapper.UserToUserDTOMapper;
 import com.tracegerm.tracegermws.model.user.User;
 import com.tracegerm.tracegermws.repository.IUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Objects;
 
 @Component
 @Transactional

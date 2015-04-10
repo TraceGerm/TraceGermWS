@@ -3,19 +3,18 @@
  */
 package com.tracegerm.tracegermws.service;
 
-import java.util.Objects;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.tracegerm.tracegermws.dto.PlaceDTO;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
 import com.tracegerm.tracegermws.mapper.PlaceDTOtoPlaceMapper;
 import com.tracegerm.tracegermws.mapper.PlaceToPlaceDTOMapper;
 import com.tracegerm.tracegermws.model.place.Place;
 import com.tracegerm.tracegermws.repository.IPlaceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Objects;
 
 /**
  * @author askos
@@ -34,7 +33,7 @@ public class PlaceService implements IPlaceService{
 	
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	@Override
-	public long createPlace(PlaceDTO placeDTO) {
+	public Long createPlace(PlaceDTO placeDTO) {
 		Place place = new PlaceDTOtoPlaceMapper().map(placeDTO, new Place());
 		place = placeRepository.save(place);
 

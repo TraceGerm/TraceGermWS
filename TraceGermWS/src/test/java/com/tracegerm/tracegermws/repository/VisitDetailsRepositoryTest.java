@@ -54,10 +54,10 @@ public class VisitDetailsRepositoryTest extends DbUnitTestCase {
 	public void testVisitDetailsNotFoundByUser() throws ResourceNotFoundException {
 		User user = new User("USER_NOT_EXIST");
 		List<VisitDetails> visitDetails = visitDetailsRepository.findVisitDetailsByUser(user);
-		assertTrue(visitDetails.isEmpty());		
+		assertTrue(visitDetails.isEmpty());
 	}
-	
-	@Test 
+
+	@Test
 	public void testVisitDetailsCreationAfterPlace() {
 		Place place = placeRepository.findOne(1L);
 		User user = new User ("USER1");
@@ -65,7 +65,7 @@ public class VisitDetailsRepositoryTest extends DbUnitTestCase {
 		visitDetails.setUser(user);
 		java.util.Date date= new java.util.Date();
 		visitDetails.setTimeStamp(new Timestamp(date.getTime()));
-		place.getDetailsList().add(visitDetails);
+		//place.getDetailsList().add(visitDetails);
 		placeRepository.save(place);
 		assertEquals("USER1",visitDetailsRepository.findVisitDetailsByUser(user).get(0).getUser().getUsername());
 	}

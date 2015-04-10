@@ -3,16 +3,6 @@
  */
 package com.tracegerm.tracegermws.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.tracegerm.tracegermws.dto.VisitDetailsDTO;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
 import com.tracegerm.tracegermws.mapper.IMapper;
@@ -22,6 +12,15 @@ import com.tracegerm.tracegermws.model.user.User;
 import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
 import com.tracegerm.tracegermws.repository.IUserRepository;
 import com.tracegerm.tracegermws.repository.IVisitDetailsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author askos

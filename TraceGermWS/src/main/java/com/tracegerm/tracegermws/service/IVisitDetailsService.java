@@ -3,11 +3,11 @@
  */
 package com.tracegerm.tracegermws.service;
 
-import java.util.Collection;
-
 import com.tracegerm.tracegermws.dto.VisitDetailsDTO;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
 import com.tracegerm.tracegermws.model.user.User;
+
+import java.util.Collection;
 
 /**
  * @author askos

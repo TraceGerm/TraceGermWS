@@ -1,20 +1,10 @@
 package com.tracegerm.tracegermws.model.place;
 
+import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
 
 @Entity
 @Table(name = "PLACES")
@@ -33,10 +23,7 @@ public class Place {
 	
 	@Column(name = "ACCURACY")
 	protected float accuracy;
-	
-	@OneToMany(targetEntity = VisitDetails.class, cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
-	@JoinColumn(name ="FK_PLACE")
-	private List<VisitDetails> detailsList = new ArrayList<VisitDetails>();
+
 
 	public double getLatitude() {
 		return latitude;
@@ -70,13 +57,4 @@ public class Place {
 		this.id = id;
 	}
 
-	public List<VisitDetails> getDetailsList() {
-		return detailsList;
-	}
-
-	public void setDetailsList(List<VisitDetails> detailsList) {
-		this.detailsList = detailsList;
-	}
-	
-	
 }

@@ -12,7 +12,7 @@ import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
  */
 public interface IPlaceService {
 	
-	long createPlace (PlaceDTO placeDTO);
+	Long createPlace (PlaceDTO placeDTO);
 	
 	PlaceDTO fetchPlaceByID(long placeId) throws ResourceNotFoundException;
 
