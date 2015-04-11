@@ -29,12 +29,12 @@ public class AlertController {
         this.alertService = alertService;
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/save/user/{username}/place/{placeId}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
-    ResponseEntity<Long> createAlert(@RequestBody AlertDTO alertDTO) {
-        LOGGER.info("Request for new alert");
+    ResponseEntity<Long> createAlert(@PathVariable String username, @PathVariable Long placeId, @RequestBody AlertDTO alertDTO) {
+        LOGGER.info("Request for new alert with username:"+username);
 
-        long alertID = alertService.createAlert(alertDTO);
+        long alertID = alertService.createAlert(username, placeId, alertDTO);
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>(alertID, headers, HttpStatus.CREATED);
     }
