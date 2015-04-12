@@ -8,7 +8,7 @@ import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
  */
 public interface IAlertService {
 
-    Long createAlert( AlertDTO alertDTO);
+    Long createAlert(String username, Long placeId, AlertDTO alertDTO);
 
     AlertDTO fetchPlaceByID(long alertId) throws ResourceNotFoundException;
 }

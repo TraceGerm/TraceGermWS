@@ -64,7 +64,7 @@ public class VisitDetailsRepositoryTest extends DbUnitTestCase {
 		VisitDetails visitDetails = new VisitDetails();
 		visitDetails.setUser(user);
 		java.util.Date date= new java.util.Date();
-		visitDetails.setTimeStamp(new Timestamp(date.getTime()));
+		visitDetails.setTimestamp(new Timestamp(date.getTime()));
 		//place.getDetailsList().add(visitDetails);
 		placeRepository.save(place);
 		assertEquals("USER1",visitDetailsRepository.findVisitDetailsByUser(user).get(0).getUser().getUsername());

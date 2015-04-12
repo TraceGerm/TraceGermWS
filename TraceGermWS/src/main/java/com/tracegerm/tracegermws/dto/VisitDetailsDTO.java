@@ -15,7 +15,7 @@ public class VisitDetailsDTO {
 	
 	private Long id;
 	
-	private Timestamp timeStamp;
+	private Timestamp timestamp;
 
 	private User user;
 	
@@ -27,12 +27,12 @@ public class VisitDetailsDTO {
 		this.id = id;
 	}
 
-	public Timestamp getTimeStamp() {
-		return timeStamp;
+	public Timestamp getTimestamp() {
+		return timestamp;
 	}
 
-	public void setTimeStamp(Timestamp timeStamp) {
-		this.timeStamp = timeStamp;
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	public User getUser() {

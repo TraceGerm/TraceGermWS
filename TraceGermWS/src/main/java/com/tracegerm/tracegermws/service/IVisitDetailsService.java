@@ -15,7 +15,7 @@ import java.util.Collection;
  */
 public interface IVisitDetailsService {
 	
-	long createVisitDetails(String username, VisitDetailsDTO visitDetailsDTO);
+	long createVisitDetails(String username, Long placeId, VisitDetailsDTO visitDetailsDTO);
 	
 	VisitDetailsDTO fetchVisitDetailsByID(long visitDetailsId) throws ResourceNotFoundException;
 	
