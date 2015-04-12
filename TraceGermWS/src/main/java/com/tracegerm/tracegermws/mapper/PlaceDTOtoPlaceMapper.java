@@ -15,6 +15,7 @@ public class PlaceDTOtoPlaceMapper implements IMapper<PlaceDTO, Place>{
 
 	@Override
 	public Place map(PlaceDTO source, Place target) {
+		target.setId(source.getId());
 		target.setLatitude(source.getLatitude());
 		target.setLongitude(source.getLongitude());
 		target.setAccuracy(source.getAccuracy());
