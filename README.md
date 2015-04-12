@@ -21,3 +21,8 @@ informed in time and the outbreak can be restrained.
 TraceGermWS is able to export data of possible infection because it constantly stores the places its users have 
 visited. This way TraceGermWS can provide usefull information to centers of diseases control and prevention without 
 revealing any personal information of the users as it only stores a username.
+
+
+## Continuous integration
+Project build status:
+[![Build Status](https://travis-ci.org/TraceGerm/TraceGermWS.svg?branch=master)](https://travis-ci.org/TraceGerm/TraceGermWS)
