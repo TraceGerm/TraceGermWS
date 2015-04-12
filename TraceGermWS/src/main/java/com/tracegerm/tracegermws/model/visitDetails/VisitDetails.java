@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.tracegerm.tracegermws.model.place.Place;
 import com.tracegerm.tracegermws.model.user.User;
 
 
@@ -25,12 +26,16 @@ public class VisitDetails {
 	protected Long id;
 	
 	@ManyToOne(targetEntity = User.class,fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name = "FK_USERNAME", nullable = false, updatable = false)
+	@JoinColumn(name = "FK_USER", nullable = false, updatable = false)
 	private User user;
+
+	@ManyToOne(targetEntity = Place.class, fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "FK_PLACE", nullable = false, updatable = false)
+	private Place place;
 	
 
 	@Column(name = "TIMESTAMP")
-	protected Timestamp timeStamp;
+	protected Timestamp timestamp;
 
 	public Long getId() {
 		return id;
@@ -48,14 +53,19 @@ public class VisitDetails {
 		this.user = user;
 	}
 
-	public Timestamp getTimeStamp() {
-		return timeStamp;
+	public Timestamp getTimestamp() {
+		return timestamp;
 	}
 
-	public void setTimeStamp(Timestamp timeStamp) {
-		this.timeStamp = timeStamp;
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
 	}
-	
-	
 
+	public Place getPlace() {
+		return place;
+	}
+
+	public void setPlace(Place place) {
+		this.place = place;
+	}
 }

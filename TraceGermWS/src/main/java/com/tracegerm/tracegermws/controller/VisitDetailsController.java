@@ -3,8 +3,10 @@
  */
 package com.tracegerm.tracegermws.controller;
 
-import java.util.Collection;
-
+import com.tracegerm.tracegermws.dto.VisitDetailsDTO;
+import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
+import com.tracegerm.tracegermws.model.user.User;
+import com.tracegerm.tracegermws.service.IVisitDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +14,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.tracegerm.tracegermws.dto.VisitDetailsDTO;
-import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
-import com.tracegerm.tracegermws.model.user.User;
-import com.tracegerm.tracegermws.service.IVisitDetailsService;
+import java.util.Collection;
 
 /**
  * @author askos
@@ -41,11 +35,11 @@ public class VisitDetailsController {
 		this.visitDetailsService = visitDetailsService;
 	}
 	
-	@RequestMapping(value = "/save{username}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> createVisitDetails(@RequestParam String username, @RequestBody VisitDetailsDTO visitDetailsDTO) {
+	@RequestMapping(value = "/save/user/{username}/place/{placeId}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Void> createVisitDetails(@PathVariable String username, @PathVariable Long placeId, @RequestBody VisitDetailsDTO visitDetailsDTO) {
 		LOGGER.info("Request for visit details creation for user with username:"+ username);
 		
-		visitDetailsService.createVisitDetails(username, visitDetailsDTO);
+		visitDetailsService.createVisitDetails(username, placeId, visitDetailsDTO);
 		HttpHeaders headers = new HttpHeaders();
 		return new ResponseEntity<>(headers, HttpStatus.CREATED);
 	}

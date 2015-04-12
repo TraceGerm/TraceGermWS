@@ -14,7 +14,7 @@ public class VisitDetailsToVisitDetailsDTOMapper implements IMapper<VisitDetails
 
 	@Override
 	public VisitDetailsDTO map(VisitDetails source, VisitDetailsDTO target) {
-		target.setTimeStamp(source.getTimeStamp());
+		target.setTimestamp(source.getTimestamp());
 		
 		return target;
 	}

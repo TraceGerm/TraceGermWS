@@ -3,16 +3,6 @@
  */
 package com.tracegerm.tracegermws.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.tracegerm.tracegermws.dto.VisitDetailsDTO;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
 import com.tracegerm.tracegermws.mapper.IMapper;
@@ -20,8 +10,18 @@ import com.tracegerm.tracegermws.mapper.VisitDetailsDTOtoVisitDetailsMapper;
 import com.tracegerm.tracegermws.mapper.VisitDetailsToVisitDetailsDTOMapper;
 import com.tracegerm.tracegermws.model.user.User;
 import com.tracegerm.tracegermws.model.visitDetails.VisitDetails;
+import com.tracegerm.tracegermws.repository.IPlaceRepository;
 import com.tracegerm.tracegermws.repository.IUserRepository;
 import com.tracegerm.tracegermws.repository.IVisitDetailsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author askos
@@ -33,18 +33,21 @@ public class VisitDetailsService implements IVisitDetailsService{
 
 	private final IVisitDetailsRepository visitDetailsRepository;
 	private final IUserRepository userRepository;
+	private final IPlaceRepository placeRepository;
 
 	@Autowired
-	public VisitDetailsService(IVisitDetailsRepository visitDetailsRepository, IUserRepository userRepository) {
+	public VisitDetailsService(IVisitDetailsRepository visitDetailsRepository, IUserRepository userRepository, IPlaceRepository placeRepository) {
 		this.visitDetailsRepository = visitDetailsRepository;
 		this.userRepository = userRepository;
+		this.placeRepository = placeRepository;
 	}
 	
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 	@Override
-	public long createVisitDetails(String username, VisitDetailsDTO visitDetailsDTO) {
+	public long createVisitDetails(String username, Long placeId, VisitDetailsDTO visitDetailsDTO) {
 		VisitDetails visitDetails = new VisitDetailsDTOtoVisitDetailsMapper().map(visitDetailsDTO, new VisitDetails());
-		visitDetails.setUser(userRepository.findOne(username)); 
+		visitDetails.setUser(userRepository.findOne(username));
+		visitDetails.setPlace(placeRepository.findOne(placeId));
 		visitDetailsRepository.save(visitDetails);
 		return visitDetails.getId();
 	}
