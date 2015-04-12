@@ -35,11 +35,11 @@ public class VisitDetailsController {
 		this.visitDetailsService = visitDetailsService;
 	}
 	
-	@RequestMapping(value = "/save{username}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> createVisitDetails(@RequestParam String username, @RequestBody VisitDetailsDTO visitDetailsDTO) {
+	@RequestMapping(value = "/save/user/{username}/place/{placeId}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Void> createVisitDetails(@PathVariable String username, @PathVariable Long placeId,  @RequestBody VisitDetailsDTO visitDetailsDTO) {
 		LOGGER.info("Request for visit details creation for user with username:"+ username);
 		
-		visitDetailsService.createVisitDetails(username, visitDetailsDTO);
+		visitDetailsService.createVisitDetails(username, placeId, visitDetailsDTO);
 		HttpHeaders headers = new HttpHeaders();
 		return new ResponseEntity<>(headers, HttpStatus.CREATED);
 	}

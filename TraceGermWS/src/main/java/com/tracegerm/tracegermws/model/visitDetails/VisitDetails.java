@@ -35,7 +35,7 @@ public class VisitDetails {
 	
 
 	@Column(name = "TIMESTAMP")
-	protected Timestamp timeStamp;
+	protected Timestamp timestamp;
 
 	public Long getId() {
 		return id;
@@ -53,12 +53,12 @@ public class VisitDetails {
 		this.user = user;
 	}
 
-	public Timestamp getTimeStamp() {
-		return timeStamp;
+	public Timestamp getTimestamp() {
+		return timestamp;
 	}
 
-	public void setTimeStamp(Timestamp timeStamp) {
-		this.timeStamp = timeStamp;
+	public void setTimestamp(Timestamp timestamp) {
+		this.timestamp = timestamp;
 	}
 
 	public Place getPlace() {
