@@ -47,7 +47,6 @@ public class AlertRepositoryTest extends DbUnitTestCase {
         alert.setTimestamp(new Timestamp(date.getTime()));
         alert.setPlace(placeRepository.findOne(1L));
         alert.setUser(userRepository.findOne("USER1"));
-        alert.setDetailsList(detailsRepository.findVisitDetailsByPlace(alert.getPlace()));
         alertRepository.save(alert);
         assertNotNull(alert.getId());
     }

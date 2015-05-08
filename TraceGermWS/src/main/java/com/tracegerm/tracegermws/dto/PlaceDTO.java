@@ -20,7 +20,6 @@ public class PlaceDTO {
 	private double latitude;
 	private double longitude;
 	private float accuracy;
-	private List<VisitDetails> detailsList = new ArrayList<VisitDetails>();
 	
 	DecimalFormat newFormat = new DecimalFormat("##.#####");
 	
@@ -48,13 +47,5 @@ public class PlaceDTO {
 	}
 	public void setAccuracy(float accuracy) {
 		this.accuracy = accuracy;
-	}
-
-	public List<VisitDetails> getDetailsList() {
-		return detailsList;
-	}
-
-	public void setDetailsList(List<VisitDetails> detailsList) {
-		this.detailsList = detailsList;
 	}
 }

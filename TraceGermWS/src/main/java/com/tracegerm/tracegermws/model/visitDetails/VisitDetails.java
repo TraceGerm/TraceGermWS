@@ -32,7 +32,6 @@ public class VisitDetails {
 	@ManyToOne(targetEntity = Place.class, fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "FK_PLACE", nullable = false, updatable = false)
 	private Place place;
-	
 
 	@Column(name = "TIMESTAMP")
 	protected Timestamp timestamp;

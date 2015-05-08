@@ -26,13 +26,9 @@ public class Alert {
     @JoinColumn(name = "FK_USER")
     private User user;
 
-    @OneToOne(targetEntity = Place.class, cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
+    @OneToOne(targetEntity = Place.class, cascade=CascadeType.ALL, fetch=FetchType.EAGER, orphanRemoval=true)
     @JoinColumn(name ="FK_PLACE")
     private Place place;
-
-    @OneToMany(targetEntity = VisitDetails.class, cascade=CascadeType.ALL, fetch=FetchType.LAZY, orphanRemoval=true)
-    @JoinColumn(name ="FK_ALERT")
-    private List<VisitDetails> detailsList = new ArrayList<>();
 
     @Column (name = "TIMESTAMP")
     protected Timestamp timestamp;
@@ -51,14 +47,6 @@ public class Alert {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public List<VisitDetails> getDetailsList() {
-        return detailsList;
-    }
-
-    public void setDetailsList(List<VisitDetails> detailsList) {
-        this.detailsList = detailsList;
     }
 
     public Place getPlace() {

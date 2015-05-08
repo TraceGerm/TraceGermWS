@@ -11,8 +11,7 @@ public class AlertDTOtoAlertMapper implements IMapper<AlertDTO, Alert> {
     @Override
     public Alert map(AlertDTO source, Alert target) {
         target.setId(source.getId());
-        target.setUser(source.getUser());
-        target.setDetailsList(source.getDetailsList());
+        //target.setUser(source.getUser());
         target.setPlace(source.getPlace());
         target.setTimestamp(source.getTimestamp());
         return target;

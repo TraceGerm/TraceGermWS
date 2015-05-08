@@ -16,7 +16,6 @@ public class AlertDTO {
     private Long id;
     private User user;
     private Place place;
-    private List<VisitDetails> detailsList = new ArrayList<VisitDetails>();
     private Timestamp timestamp;
 
     public Long getId() {
@@ -41,14 +40,6 @@ public class AlertDTO {
 
     public void setPlace(Place place) {
         this.place = place;
-    }
-
-    public List<VisitDetails> getDetailsList() {
-        return detailsList;
-    }
-
-    public void setDetailsList(List<VisitDetails> detailsList) {
-        this.detailsList = detailsList;
     }
 
     public Timestamp getTimestamp() {

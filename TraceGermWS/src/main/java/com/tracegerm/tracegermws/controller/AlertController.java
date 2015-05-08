@@ -2,6 +2,7 @@ package com.tracegerm.tracegermws.controller;
 
 import com.tracegerm.tracegermws.dto.AlertDTO;
 import com.tracegerm.tracegermws.exception.ResourceNotFoundException;
+import com.tracegerm.tracegermws.model.alert.Alert;
 import com.tracegerm.tracegermws.service.IAlertService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created by askos on 10/4/2015.
@@ -41,9 +45,25 @@ public class AlertController {
 
     @RequestMapping(value = "/{alertId}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AlertDTO> getAlert(@PathVariable long alertId)  throws ResourceNotFoundException {
-        LOGGER.info("Request for place");
+        LOGGER.info("Request for alert");
 
-        AlertDTO alert = alertService.fetchPlaceByID(alertId);
+        AlertDTO alert = alertService.fetchAlertByID(alertId);
         return new ResponseEntity<>(alert, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/{timestamp}", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<AlertDTO>> getAlertsByTimestamp(@PathVariable Timestamp timestamp)  throws ResourceNotFoundException {
+        LOGGER.info("Request for alerts");
+
+        List<AlertDTO> alerts = alertService.fetchAlertsByTimestamp(timestamp);
+        return new ResponseEntity<>(alerts, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/findAll", method = RequestMethod.GET , produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<AlertDTO>> getAlerts()  throws ResourceNotFoundException {
+        LOGGER.info("Request for alerts");
+
+        List<AlertDTO> alerts = alertService.fetchAllAlerts();
+        return new ResponseEntity<>(alerts, HttpStatus.OK);
     }
 }
