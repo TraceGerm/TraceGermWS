@@ -3,6 +3,7 @@
  */
 package com.tracegerm.tracegermws.dto;
 
+import com.tracegerm.tracegermws.model.place.Place;
 import com.tracegerm.tracegermws.model.user.User;
 
 import java.sql.Timestamp;
@@ -18,6 +19,8 @@ public class VisitDetailsDTO {
 	private Timestamp timestamp;
 
 	private User user;
+
+	private Place place;
 	
 	public Long getId() {
 		return id;
@@ -41,5 +44,13 @@ public class VisitDetailsDTO {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Place getPlace() {
+		return place;
+	}
+
+	public void setPlace(Place place) {
+		this.place = place;
 	}
 }
