@@ -13,7 +13,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Created by askos on 10/4/2015.
@@ -46,9 +50,32 @@ public class AlertService implements IAlertService {
 
     @Transactional(readOnly = true)
     @Override
-    public AlertDTO fetchPlaceByID(long alertId) throws ResourceNotFoundException {
+    public AlertDTO fetchAlertByID(long alertId) throws ResourceNotFoundException {
         Alert alert = alertRepository.findOne(alertId);
         return Objects.nonNull(alert) ?
                 new AlertToAlertDTOMapper().map(alert, new AlertDTO()) : new AlertDTO();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<AlertDTO> fetchAlertsByTimestamp(Timestamp timestamp) throws ResourceNotFoundException {
+        List<Alert> alerts= alertRepository.findAlertsByTimestamp(timestamp);
+        List<AlertDTO> alertDTOs = null;
+        for (Alert alert : alerts){
+            alertDTOs.add( Objects.nonNull(alerts) ?
+                    new AlertToAlertDTOMapper().map(alert, new AlertDTO()) : new AlertDTO());
+
+        }
+        return alertDTOs;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<AlertDTO> fetchAllAlerts() throws ResourceNotFoundException {
+        List<Alert> alerts= alertRepository.findAll();
+        List<AlertDTO> alertDTOs = alerts.stream().map(alert -> Objects.nonNull(alert) ?
+                new AlertToAlertDTOMapper().map(alert, new AlertDTO()) : new AlertDTO()).collect(Collectors.toList());
+        return alertDTOs;
+        //return  alerts;
     }
 }
