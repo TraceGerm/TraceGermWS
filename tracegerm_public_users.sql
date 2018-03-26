@@ -1,0 +1,3 @@
+INSERT INTO public.users (user_id, authorities, email, name, password, surname, username) VALUES (1, 'ROLE_USER', 'test1@test.com', 'test', 'test', 'test', 'USER1');
+INSERT INTO public.users (user_id, authorities, email, name, password, surname, username) VALUES (2, 'ROLE_USER', 'test2@test.com', 'test', 'test', 'test', 'USER2');
+INSERT INTO public.users (user_id, authorities, email, name, password, surname, username) VALUES (3, 'ROLE_USER', 'test3@test.com', 'test', 'test', 'test', 'USER3');

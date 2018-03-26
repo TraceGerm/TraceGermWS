@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+	
+	<USERS USER_ID="1" AUTHORITIES="ROLE_USER" EMAIL="test1@test.com" name="test" surname="test" USERNAME="USER1" password="test"/>
+	<USERS USER_ID="2" AUTHORITIES="ROLE_USER" EMAIL="test2@test.com" name="test" surname="test" USERNAME="USER2" password="test"/>
+	<USERS USER_ID="3" AUTHORITIES="ROLE_USER" EMAIL="test3@test.com" name="test" surname="test" USERNAME="USER3" password="test"/>
+
+	<PLACES PLACE_ID="1" ACCURACY="30.5" position="0101000020E61000003CDBA337DCC351C06D37C1374D374840" TIMESTAMP="2016-10-23T20:50:30.441071" FK_USER="1"/>
+
+	<ALERTS ALERT_ID="1" TIMESTAMP="2015-05-14" FK_PLACE="1" FK_USER="1" ACCEPTED="false" />
+
+	<NOTIFICATIONS NOTIFICATION_ID="1" ACCEPTED="FALSE" FK_ALERT="1" FK_USER="1" />
+
+</dataset>
